@@ -24,10 +24,12 @@ public class ParserFactory {
         }
     }
 
-    public static FileInputParser getService(String type) {
-        FileInputParser service = parserCache.get(type);
-        if(service == null) throw new RuntimeException("Unknown service type: " + type);
-        return service;
+    public FileInputParser getParser(String inputFileType) {
+        FileInputParser parser = parserCache.get(inputFileType);
+        if(parser == null) {
+            throw new RuntimeException("Unknown parser type");
+        }
+        return parser;
     }
 
 }
